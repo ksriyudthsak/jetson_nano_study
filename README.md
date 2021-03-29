@@ -59,3 +59,18 @@ xhost +
 docker run -it --rm --gpus all --runtime nvidia --network host -v /home/ks/Documents:/mnt/ml --device /dev/video0 -e DISPLAY=$DISPLAY l4t-ml-cv-trt:latest
 </code></pre>
 
+## Docker Container (for tensorflow models)
+
+<pre><code># pull tensorflow docker
+docker pull nvcr.io/nvidia/l4t-tensorflow:r32.4.4-tf2.3-py3
+
+# run docker container
+docker run -it --rm --gpus all --runtime nvidia --network host -v /home/ks/Documents:/mnt/ml nvcr.io/nvidia/l4t-tensorflow:r32.4.4-tf2.3-py3
+
+# install jupyter notebook in docker container (optional)
+pip3 install --upgrade pip
+pip3 install jupyter lab
+
+# run jupyter notebook (optional)
+jupyter notebook --ip=0.0.0.0 --allow-root
+</code></pre>
